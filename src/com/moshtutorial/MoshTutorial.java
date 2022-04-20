@@ -13,17 +13,24 @@ public class MoshTutorial {
         float apr = (float) readNumber("Annual Interest Rate: ", 0, 30);
         byte years = (byte) readNumber("Period (Years): ", 0, 30);
 
+        printMortgage(principal, apr, years);
+
+        printPaymentSchedule(principal, apr, years);
+    }
+
+    private static void printMortgage(int principal, float apr, byte years) {
         double mortgage = calculateMortgage(principal, apr, years);
         String payment = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println();
         System.out.println("MORTGAGE");
         System.out.println("--------");
         System.out.println("Monthly Payments: " + payment);
+    }
 
+    private static void printPaymentSchedule(int principal, float apr, byte years) {
         System.out.println();
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("----------------");
-
         for (short month = 1; month <= years * MONTHS; month++) {
             double balance = calculateBalance(principal, apr, years, month);
                 String remainder = NumberFormat.getCurrencyInstance().format(balance);
