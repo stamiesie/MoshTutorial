@@ -1,9 +1,6 @@
 package com.moshtutorial;
 
 public class MoshTutorial {
-    final static byte MONTHS = 12;
-    final static byte PERCENT = 100;
-
     public static void main(String[] args) {
         int principal = (int) Console.readNumber("Principal ($1K - $1M): ", 1000, 1_000_000);
         float apr = (float) Console.readNumber("Annual Interest Rate: ", 0, 30);

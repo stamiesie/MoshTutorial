@@ -1,6 +1,8 @@
 package com.moshtutorial;
 
 public class MortgageCalculator {
+    public final static byte MONTHS = 12;
+    public final static byte PERCENT = 100;
     private int principal;
     private float apr;
     private byte years;
@@ -12,9 +14,8 @@ public class MortgageCalculator {
     }
 
     public double calculateMortgage() {
-
-        float monthlyInterest = apr / MoshTutorial.PERCENT / MoshTutorial.MONTHS;
-        short totalPayments = (short)(years * MoshTutorial.MONTHS);
+        float monthlyInterest = apr / PERCENT / MONTHS;
+        short totalPayments = (short)(years * MONTHS);
 
         double mortgage = principal
                 * (monthlyInterest * Math.pow(1 + monthlyInterest, totalPayments)
@@ -24,8 +25,8 @@ public class MortgageCalculator {
     }
 
     public double calculateBalance(short numberOfPaymentsMade) {
-        float monthlyInterest = apr / MoshTutorial.PERCENT / MoshTutorial.MONTHS;
-        short totalPayments = (short)(years * MoshTutorial.MONTHS);
+        float monthlyInterest = apr / PERCENT / MONTHS;
+        short totalPayments = (short)(years * MONTHS);
 
         double balance = principal
                 * (Math.pow(1 + monthlyInterest, totalPayments) - Math.pow(1 + monthlyInterest, numberOfPaymentsMade))
