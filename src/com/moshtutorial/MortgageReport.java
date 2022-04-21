@@ -1,3 +1,4 @@
+//Separation of Concerns - this class is all about presentation of the data
 package com.moshtutorial;
 
 import java.text.NumberFormat;
