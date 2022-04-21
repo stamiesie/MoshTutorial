@@ -1,7 +1,5 @@
 package com.moshtutorial;
 
-import java.text.NumberFormat;
-
 public class MoshTutorial {
     final static byte MONTHS = 12;
     final static byte PERCENT = 100;
@@ -11,29 +9,8 @@ public class MoshTutorial {
         float apr = (float) Console.readNumber("Annual Interest Rate: ", 0, 30);
         byte years = (byte) Console.readNumber("Period (Years): ", 0, 30);
 
-        printMortgage(principal, apr, years);
-
-        printPaymentSchedule(principal, apr, years);
-    }
-
-    private static void printMortgage(int principal, float apr, byte years) {
-        double mortgage = calculateMortgage(principal, apr, years);
-        String payment = NumberFormat.getCurrencyInstance().format(mortgage);
-        System.out.println();
-        System.out.println("MORTGAGE");
-        System.out.println("--------");
-        System.out.println("Monthly Payments: " + payment);
-    }
-
-    private static void printPaymentSchedule(int principal, float apr, byte years) {
-        System.out.println();
-        System.out.println("PAYMENT SCHEDULE");
-        System.out.println("----------------");
-        for (short month = 1; month <= years * MONTHS; month++) {
-            double balance = calculateBalance(principal, apr, years, month);
-                String remainder = NumberFormat.getCurrencyInstance().format(balance);
-                System.out.println("Balance after payment " + month +": " + remainder);
-        }
+        MortgageReport.printMortgage(principal, apr, years);
+        MortgageReport.printPaymentSchedule(principal, apr, years);
     }
 
     public static double calculateMortgage(
