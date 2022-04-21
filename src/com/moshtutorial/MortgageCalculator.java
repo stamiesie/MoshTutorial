@@ -2,8 +2,8 @@
 package com.moshtutorial;
 
 public class MortgageCalculator {
-    public final static byte MONTHS = 12;
-    public final static byte PERCENT = 100;
+    private final static byte MONTHS = 12;
+    private final static byte PERCENT = 100;
     private int principal;
     private float apr;
     private byte years;
@@ -36,15 +36,19 @@ public class MortgageCalculator {
 
         return balance;
     }
+    public double[] getRemainingBalances() {
+        var balances = new double[getTotalPayments()];
+        for (short month = 1; month <= balances.length; month++)
+            balances[month - 1] = calculateBalance(month);
+
+        return balances;
+    }
 
     private float getMonthlyInterest() {
         return apr / PERCENT / MONTHS;
     }
+
     private short getTotalPayments() {
         return (short) (years * MONTHS);
-    }
-
-    public byte getYears() {
-        return years;
     }
 }
