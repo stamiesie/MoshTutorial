@@ -1,13 +1,12 @@
 package com.moshtutorial;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class MoshTutorial {
     final static byte MONTHS = 12;
     final static byte PERCENT = 100;
+
     public static void main(String[] args) {
         int principal = (int) readNumber("Principal ($1K - $1M): ", 1000, 1_000_000);
         float apr = (float) readNumber("Annual Interest Rate: ", 0, 30);
@@ -34,7 +33,7 @@ public class MoshTutorial {
         for (short month = 1; month <= years * MONTHS; month++) {
             double balance = calculateBalance(principal, apr, years, month);
                 String remainder = NumberFormat.getCurrencyInstance().format(balance);
-                System.out.println(remainder);
+                System.out.println("Balance after payment " + month +": " + remainder);
         }
     }
 
